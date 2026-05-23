@@ -1,5 +1,6 @@
-FROM ghcr.io/astral-sh/uv:latest
+FROM python:3.12-slim-bookworm
 WORKDIR /app
+RUN pip install --no-cache-dir uv
 RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 COPY . .
 RUN uv sync --frozen --no-dev
